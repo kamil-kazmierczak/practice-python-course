@@ -13,9 +13,19 @@ if len(sys.argv) != 2:
 
 fname = sys.argv[1]
 
+founded_langs = set() # {} is the same
+
 def check_line(value):
-    # todo
+    for klang, vlangs in langs.items():
+        for vlang in vlangs:
+            if vlang in line:
+                return klang
+    return -1
 
 with open(fname, 'r') as f:
     for line in f.readlines():
-       # check_line(str(line)) 
+        val = check_line(str(line))
+        if val != -1:
+            founded_langs.add(val)
+
+print(*founded_langs)
